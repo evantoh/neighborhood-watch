@@ -1,12 +1,12 @@
 {%extends 'all-temps/base.html'%}
 
 {% block content %}
-<h2>{{ user.get_full_name }}</h2>
-<ul>
-  <li>Username: {{ user.username }}</li>
-  <li>Location: {{ user.profile.location }}</li>
-  <li>Birth Date: {{ user.profile.birth_date }}</li>
-</ul>
+<form method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <button type="submit">Save changes</button>
+      </form>
 
 {{bock.super}}
 {% endblock %}
