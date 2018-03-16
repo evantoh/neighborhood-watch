@@ -1,0 +1,63 @@
+{% load bootstrap3 %} {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Styles block -->
+    {% block styles %} {% bootstrap_css %}
+    <script src="https://use.fontawesome.com/80caa23151.js"></script>
+
+    {% endblock %}
+</head>
+
+<body>
+ <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+   <div class="navbar-header">
+          <a href="" class="navbar-brand siteIcon" style=" margin-top: 7%;
+          margin-left: 26px;">
+              <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+          </a>
+         
+      </div>
+      <div style="margin-left:40%; margin-top:20px;">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search_users' %}">
+            <input class="form-control mr-sm-2" type="search" name="username"  placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+      </div>
+      <div class="col-sm-6 col-md-6" style="margin-left: 85%;margin-top: -52px;">
+        {% if user.is_authenticated %}
+        <ul>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="{%url 'index'%}">Home</a>
+              </li>
+              <li>
+                <a href="/accounts/password/change">Change Password</a>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        {% else %}
+        <li>
+          <a class='btn btn-default' href="/accounts/login">Login</a>
+        </li>
+
+        {% endif %}
+      </div>
+          
+      </div>
+    </nav>
+</body>
+</html>
