@@ -17,14 +17,9 @@
  <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
    <div class="navbar-header">
-          <a href="" class="navbar-brand siteIcon" style=" margin-top: 7%;
-          margin-left: 26px;">
-              <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
-          </a>
-         
       </div>
       <div style="margin-left:40%; margin-top:20px;">
-        <form class="form-inline my-2 my-lg-0" action="{% url 'search_users' %}">
+        <form class="form-inline my-2 my-lg-0" action="">
             <input class="form-control mr-sm-2" type="search" name="username"  placeholder="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
@@ -38,7 +33,7 @@
             </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a href="{%url 'index'%}">Home</a>
+                <a href="">Home</a>
               </li>
               <li>
                 <a href="/accounts/password/change">Change Password</a>
