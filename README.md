@@ -1,5 +1,4 @@
-#LOGIN
-![gallery](insta1.png)
+
 # NEIGHBOURHOOD WATCH
 #### By **evans mwenda**
 ## Description
