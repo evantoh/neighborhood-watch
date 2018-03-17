@@ -62,4 +62,40 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-#
+class Business(models.Model):
+    business_name = models.CharField(max_length =30,null=True) 
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
+    neighborhood_id = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, null= True)
+    business_email = models.EmailField(null=True)
+    business_description = models.TextField(null= True )
+
+    def __str__(self):
+        return self.business_name  
+
+    def create_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+    def update_business(self,business_name,business_email):
+        self.business_name = business_name
+        self.business_email = business_email
+        self.save() 
+
+    @classmethod
+    def find_business(cls,business_id):
+            found_business = cls.objects.get(id= business_id)
+            return found_business
+
+    @classmethod
+    def all_business(cls):
+        found_business = cls.objects.all()
+        return found_business
+
+
+
+    @classmethod
+    def search_business(cls,business_name):
+        searched_businesses = cls.objects.filter(business_name__icontains = business_name)
+        return searched_business
