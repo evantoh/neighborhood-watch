@@ -1,11 +1,16 @@
 {%extends 'all-temps/base.html'%}
 
 {% block content %}
-<form method="post" style="margin-top:10%; margin-left:10%;">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <button type="submit">Save changes</button>
-    </form>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align:center;margin-top:10%;">edit your profile here</h1>
+            <form method="post" style="margin-top:10%; text-align:center;">
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+                    {{ profile_form.as_p }}
+                    <button type="submit">Save changes</button>
+                </form>
+    </div>
+</div>
 
 {% endblock %}

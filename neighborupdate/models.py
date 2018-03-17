@@ -23,10 +23,39 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 # create model neighborhood
-# class Neighbourhood(models.Model):
-#     neighborhood_name = models.CharField(max_length =30)
-#     neighborhood_location = models.CharField(max_length =30)
-#     occupants_count = models.IntegerField(default=0)
-#     admin=models.ForeignKey(User,null=True)
+class Neighbourhood(models.Model):
+    neigh_name = models.CharField(max_length =30,null=True)
+    neigh_location= models.CharField(max_length =30,null=True)
+    occupants_count = models.IntegerField(default=0)
+    admin=models.ForeignKey(User, on_delete=models.CASCADE, null= True)
 
+    def __str__(self):
+        return self.neigh_name
+
+    def create_neighborhood(self):
+        self.save()
+
+    def delete_neighborhood(self):
+        self.delete() 
     
+    def update_neighborhood(self,neighborhood_name,neighborhood_location,occupants_count):
+        self.neighborhood_name = neighborhood_name
+        self.neighborhood_location = neighborhood_location
+        self.occupants_count += occupants_count
+        self.save()
+
+    @classmethod
+    def find_neighborhood(cls,neighborhood_id):
+        '''
+        Method the find_neighborhood method using the neighborhood id 
+        '''
+        found_neighborhood = cls.objects.get(id = neighborhood_id)
+        return found_neighborhood
+
+    @classmethod
+    def all_neighborhoods(cls):
+        '''
+        Method that returns all the neighborhoods
+        '''
+        all_neighborhoods = cls.objects.all()
+        return all_neighborhoods
