@@ -1,3 +1,6 @@
+from django import forms
+from .models import User,Profile
+
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
@@ -5,5 +8,5 @@ class UserForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = ProfileUser
-        fields = ('url', 'neighborhood_location', 'company')
+        model =Profile
+        fields = ('bio', 'neigh_location', 'neigh_name')

@@ -3,14 +3,16 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)
+    neigh_location = models.CharField(max_length=30, blank=True)
+    neigh_name = models.CharField(max_length=30, blank=True)
 
-# Create your models here.
+    def __str__(self):
+        return self.user.username
+   
 
-class UserProfile(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
-    bio=models.TextField(max_length=500,blank=True)
-    neighborhood_location = models.CharField(max_length =30,blank=True)
-    neighborhood_name = models.CharField(max_length =30,blank=True)
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
