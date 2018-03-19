@@ -3,6 +3,6 @@ from . import views
 from django.conf import settings
 
 urlpatterns=[
-    url('^$',views.update_profile,name='profile'),
-    url('^welcome$',views.welcome,name = 'welcome'),
+    url('^create_profile$',views.update_profile,name='profile'),
+    url('^$',views.welcome,name = 'welcome'),
 ]
