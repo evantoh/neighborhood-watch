@@ -13,20 +13,20 @@
   </div>
 
   <div class="row">
-  {% if businesses %}
-    {% for business in businesses %}
-      <div class="col-sm-6 col-md-12">
-          <div class="popo" style="margin-left: 446px;margin-top: -245px;"> 
-            <h1 style="font:30px;color: black;
-            font-family: cursive;">search Details</h1>
-            <p>BUSINESS NAME: {{business.business_name}}</p>
-            <p>BUSINESS DESCRIPTION: {{business.business_description}}</p>
-             <p>  CONTACT VIA EMAIL:{{business.business_email}}</p>
-          </div>
-       
-      </div>
-    {% endfor %}
-  {% endif %}
+    {% if businesses %}
+        {% for business in businesses %}
+        <div class="col-sm-6 col-md-12">
+            <div class="popo" style="margin-left: 446px;"> 
+                <h1 style="font:30px;color: black;
+                font-family: cursive;">search Details</h1>
+                <p>BUSINESS NAME: {{business.business_name}}</p>
+                <p>BUSINESS DESCRIPTION: {{business.business_description}}</p>
+                <p> CONTACT VIA EMAIL:{{business.business_email}}</p>
+            </div>
+        
+        </div>
+        {% endfor %}
+    {% endif %}
   </div>
 </div>
 {% endblock %}

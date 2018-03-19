@@ -91,9 +91,9 @@ class Business(models.Model):
         return found_business
 
     @classmethod
-    def search_business(cls,business_name):
-        searched_businesses = cls.objects.filter(business_name__icontains = business_name)
-        return searched_business
+    def search_by_business(cls,business_name):
+        searched_bizna = cls.objects.filter(business_name__icontains = business_name)
+        return searched_bizna
 
 class Post(models.Model):
     
