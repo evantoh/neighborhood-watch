@@ -15,8 +15,8 @@
     {% endblock %}
 </head>
 
-<body style="margin-top:5%;"> 
-    <nav class="topnav">
+<body style="margin-top:2%;"> 
+    <nav class="">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
@@ -33,9 +33,13 @@
                 <li class="active"><a href="{% url 'posthood'%}">POST</a></li>
                 <li><a href="{% url 'viewBusiness'%}">VIEW/ADD BUSINESS </a></li>
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">ACCOUNT <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                            <span class="caret"></span>
+                        </a>
+                <ul class="dropdown-menu" role="menu">
+
                     {% if user.is_authenticated %}
-                    <ul class="dropdown-menu">
+
                         <li>
                             <a href="/accounts/password/change">Change Password</a>
                           </li>
@@ -50,7 +54,7 @@
               </li>
               {% endif %}
 
-              <form class="form-inline my-2 my-lg-0" action="{% url 'search_bizna' %}" style="padding-left:20%;margin-left: 13%;">
+              <form class="form-inline my-2 my-lg-0" action="{% url 'search_bizna' %}" style="padding-left:20%;margin-left: 20%;">
                   <input class="form-control mr-sm-2" type="search" name="business"  placeholder="Search Business">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>

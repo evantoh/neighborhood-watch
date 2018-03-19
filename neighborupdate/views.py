@@ -9,8 +9,8 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 
 # Create your views here.
 @login_required
-def welcome(request):
-    return render(request,'all-temps/welcome.html')
+def index(request):
+    return render(request,'all-temps/index.html')
 
 #a function that edits and create user profile at the same time
 @login_required
