@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from .forms import UserForm,ProfileForm,PostForm,BusinessForm
-from .models import User,Profile,Post,Business
+from .models import User,Profile,Post,Business,Neighbourhood
 
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 
@@ -10,7 +10,14 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 # Create your views here.
 @login_required
 def index(request):
-    return render(request,'all-temps/index.html')
+    try:
+        current_user = request.user
+        current_neighborhood = Neighbourhood.find_neighborhood(current_user.neighborhood_id.id)
+        all_posts = Post.get_all_post()
+        
+        return render(request,'all-temps/index.html',{"current_neighborhood":current_neighborhood,"current_user":current_user, "posts":all_posts})
+    except:
+        return redirect(update_profile)
 
 #a function that edits and create user profile at the same time
 @login_required

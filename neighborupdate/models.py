@@ -21,15 +21,15 @@ class Neighbourhood(models.Model):
         self.delete() 
     
     def update_neighborhood(self,neigh_name,neigh_location,occupants_count):
-        self.neighborhood_name = neighborhood_name
-        self.neighborhood_location = neighborhood_location
+        self.neigh_name = neigh_name
+        self.neighborhood_location = neigh_location
         self.occupants_count += occupants_count
         self.save()
 
     @classmethod
-    def find_neighbourhood(cls,neighborhood_id):
+    def find_neighborhood(cls,neighborhood_id):
         found_neighbourhood = cls.objects.get(id = neighborhood_id)
-        return found_neighborhood
+        return found_neighbourhood
 
     @classmethod
     def all_neighbourhoods(cls):
@@ -49,7 +49,6 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
    
-
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -58,6 +57,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+    
+
 
 class Business(models.Model):
     business_name = models.CharField(max_length =30,null=True) 
