@@ -68,3 +68,19 @@ def view_business(request):
     current_user = request.user
     businesses = Business.objects.all()
     return render(request,'all-temps/business/view_business.html',{"current_user":current_user,"businesses":businesses,})
+
+#function to search businesses
+def search_bizna(request):
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get('business')
+        searched_bizna = Business.search_by_business(search_term)
+
+        message = f"{search_term}"
+
+        return render(request, 'all-temps/search.html',{"message":message,"businesses": searched_bizna})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-temps/search.html',{"message":message})
+
+

@@ -8,4 +8,5 @@ urlpatterns=[
     url(r'^post/create',views.post,name = 'posthood'),
     url(r'^business/create',views.business,name = 'postbusiness'),
     url(r'^business/view',views.view_business,name = 'viewBusiness'),
+    url(r'^search/',views.search_bizna, name='search_bizna'),
 ]
