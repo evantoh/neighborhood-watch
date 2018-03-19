@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from .forms import UserForm,ProfileForm,PostForm
+from .forms import UserForm,ProfileForm,PostForm,BusinessForm
 
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 
@@ -33,14 +33,28 @@ def update_profile(request):
     })
 
 def post(request):
+    current_user=request.user
     if request.method == 'POST':
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             new_post = form.save(commit = False)
             new_post.user_id =  current_user
-            new_post.neighborhood_id = current_neighborhood
+            # new_post.neighborhood_id = current_neighborhood
             new_post.save()
             return redirect('welcome') 
     else:
         form = PostForm()
     return render(request,'all-temps/post.html',{"form":form})
+
+def business(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = BusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_business = form.save(commit = False)
+            new_business.user_id =  current_user
+            new_business.save()
+            return redirect('welcome') 
+    else:
+        form = BusinessForm()
+    return render(request,'all-temps/business/business.html',{"form":form})

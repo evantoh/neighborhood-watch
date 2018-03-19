@@ -25,9 +25,11 @@
           </form>
       </div>
       <div class="edit_profile">
-        <li><a href="{% url 'profile'%}">edit profile</a></li>
-
+        <li><a href="{% url 'profile'%}">profile</a></li>
       </div>
+      <div class="post_hood">
+          <li><a href="{% url 'posthood'%}">post here</a></li>
+        </div>
     
       <div class="col-sm-6 col-md-6" style="margin-left: 85%;margin-top: -52px;">
         {% if user.is_authenticated %}
