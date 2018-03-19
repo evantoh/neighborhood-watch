@@ -30,6 +30,12 @@
       <div class="post_hood">
           <li><a href="{% url 'posthood'%}">post here</a></li>
         </div>
+        <div class="create_bzna">
+            <li><a href="{% url 'postbusiness'%}">create bs here</a></li>
+          </div>
+          <div class="view_bizna">
+              <li><a href="{% url 'viewBusiness'%}">views bs here</a></li>
+            </div>
     
       <div class="col-sm-6 col-md-6" style="margin-left: 85%;margin-top: -52px;">
         {% if user.is_authenticated %}
