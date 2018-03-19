@@ -28,9 +28,6 @@ class Neighbourhood(models.Model):
 
     @classmethod
     def find_neighbourhood(cls,neighborhood_id):
-        '''
-        Method the find_neighborhood method using the neighborhood id 
-        '''
         found_neighbourhood = cls.objects.get(id = neighborhood_id)
         return found_neighborhood
 
@@ -93,9 +90,28 @@ class Business(models.Model):
         found_business = cls.objects.all()
         return found_business
 
-
-
     @classmethod
     def search_business(cls,business_name):
         searched_businesses = cls.objects.filter(business_name__icontains = business_name)
         return searched_business
+
+class Post(models.Model):
+    
+
+    title = models.CharField(max_length =30,null=True) 
+    post = models.TextField(null=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
+    neighborhood_id = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, null= True)
+    post_date = models.DateTimeField(auto_now_add=True, null= True)
+
+
+    def __str__(self):
+        return self.title
+
+    @classmethod
+    def get_all_post(cls):
+        posts = cls.objects.all()
+        return posts
+
+    class Meta:
+        ordering = ['-post_date']
