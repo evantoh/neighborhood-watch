@@ -1,5 +1,4 @@
-
- {% extends 'registration/base.html' %} 
+{% extends 'registration/base.html' %} 
  {% load bootstrap3 %} {% load staticfiles %}{% block content %}
  <div class="reg-cont" style="margin-top:10%;margin-left:35%;">
      <div class="container ">
@@ -24,7 +23,8 @@
                      <div class="panel-body">
                         <form action="/accounts/login/" method="post">
 
-                            {% csrf_token %} {% bootstrap_form form %}
+                            {% csrf_token %}
+                             {% bootstrap_form form %}
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-sm" value="Login">

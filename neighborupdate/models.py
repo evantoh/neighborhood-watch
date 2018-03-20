@@ -47,7 +47,7 @@ class Profile(models.Model):
     neigh_name = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
-        return self.user.username
+        return self.neigh_name
    
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -98,8 +98,6 @@ class Business(models.Model):
         return searched_bizna
 
 class Post(models.Model):
-    
-
     title = models.CharField(max_length =30,null=True) 
     post = models.TextField(null=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
