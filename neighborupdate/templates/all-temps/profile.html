@@ -1,15 +1,17 @@
-{%extends 'all-temps/base.html'%}
+ {%extends 'all-temps/base.html'%}{% load bootstrap3 %}{% load static%}
 
+{% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/edit-profile.css' %}">
+  {% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
-        <h1 style="text-align:center;margin-top:10%;">edit your profile here</h1>
-            <form method="post" style="margin-top:10%; text-align:center;">
-                    {% csrf_token %}
-                    {{ user_form.as_p }}
-                    {{ profile_form.as_p }}
-                    <button type="submit">Save changes</button>
-                </form>
+        <h1 style="text-align: center;margin-top: 0%;font-style: oblique;font-weight: 800;">edit your profile here</h1>
+            <form method="post" enctype="multipart/form-data" style="margin-top:5%;padding:10px;">
+                    {% csrf_token %}{% bootstrap_form user_form%}{% bootstrap_form profile_form%}
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+            </form > 
     </div>
 </div>
 
