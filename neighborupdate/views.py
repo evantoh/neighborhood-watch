@@ -8,7 +8,7 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 
 
 # Create your views here.
-
+@login_required
 def index(request):
     current_user = request.user
     # current_neighborhood = Neighbourhood.find_neighborhood(current_user.neighborhood_id.id)
