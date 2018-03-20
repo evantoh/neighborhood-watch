@@ -10,14 +10,12 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 # Create your views here.
 @login_required
 def index(request):
-    try:
-        current_user = request.user
-        current_neighborhood = Neighbourhood.find_neighborhood(current_user.neighborhood_id.id)
-        all_posts = Post.get_all_post()
-        
-        return render(request,'all-temps/index.html',{"current_neighborhood":current_neighborhood,"current_user":current_user, "posts":all_posts})
-    except:
-        return redirect(update_profile)
+    current_user = request.user
+    # current_neighborhood = Neighbourhood.find_neighborhood(current_user.neighborhood_id.id)
+    all_posts = Post.get_all_post()
+    
+    return render(request,'all-temps/index.html',{"current_user":current_user, "posts":all_posts})
+  
 
 #a function that edits and create user profile at the same time
 @login_required
@@ -30,7 +28,7 @@ def update_profile(request):
             user_form.save()
             profile_form.save()
             print('Your profile was successfully updated!')
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('index')
         else:
             print('Please correct the error below.')
     else:
