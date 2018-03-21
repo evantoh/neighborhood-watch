@@ -49,7 +49,7 @@ def post(request):
             new_post.user_id =  current_user
             # new_post.neighborhood_id = current_neighborhood
             new_post.save()
-            return redirect('welcome') 
+            return redirect('index') 
     else:
         form = PostForm()
     return render(request,'all-temps/post.html',{"form":form})
@@ -62,7 +62,7 @@ def business(request):
             new_business = form.save(commit = False)
             new_business.user_id =  current_user
             new_business.save()
-            return redirect('welcome') 
+            return redirect('index') 
     else:
         form = BusinessForm()
     return render(request,'all-temps/business/business.html',{"form":form})
